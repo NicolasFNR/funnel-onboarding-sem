@@ -333,4 +333,272 @@ font-size:42px;
 
 <h2 class="section-title">Conversión por Canal</h2>
 
-<div class="compare
+<div class="compare">
+
+<div class="compare-card">
+<span class="badge digital">Digital</span>
+
+<div class="rate">6.59%</div>
+
+<div class="progress">
+<div class="progress-fill"
+style="width:42%;background:var(--digital);">
+</div>
+</div>
+
+</div>
+
+<div class="compare-card">
+
+<span class="badge presencial">Presencial</span>
+
+<div class="rate">15.65%</div>
+
+<div class="progress">
+<div class="progress-fill"
+style="width:100%;background:var(--presencial);">
+</div>
+</div>
+
+</div>
+
+</div>
+
+<div class="tabs">
+
+<button class="tab active" onclick="showTab('digital')">
+Digital
+</button>
+
+<button class="tab" onclick="showTab('presencial')">
+Presencial
+</button>
+
+</div>
+
+<!-- DIGITAL -->
+
+<div id="digital" class="tab-content">
+
+<div class="grid">
+
+<div class="panel">
+
+<h3>Principales Fugas</h3>
+
+<div class="loss">
+<div class="loss-top">
+<span>Evaluación</span>
+<span>47.65%</span>
+</div>
+<div class="loss-bar">
+<div class="loss-fill" style="width:47.65%"></div>
+</div>
+</div>
+
+<div class="loss">
+<div class="loss-top">
+<span>Creación Solicitud</span>
+<span>35.62%</span>
+</div>
+<div class="loss-bar">
+<div class="loss-fill" style="width:35.62%"></div>
+</div>
+</div>
+
+</div>
+
+<div class="panel">
+
+<h3>Resultado General</h3>
+
+<div style="font-size:60px;color:var(--digital);font-weight:bold;">
+6.59%
+</div>
+
+<p>Tasa de aprobación de solicitudes digitales</p>
+
+</div>
+
+</div>
+
+<table>
+
+<thead>
+<tr>
+<th>Etapa</th>
+<th>Volumen</th>
+<th>%</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>Creación Solicitud</td>
+<td>2,799</td>
+<td>35.62%</td>
+</tr>
+
+<tr>
+<td>Validación INE</td>
+<td>72</td>
+<td>0.92%</td>
+</tr>
+
+<tr>
+<td>F1</td>
+<td>59</td>
+<td>0.75%</td>
+</tr>
+
+<tr>
+<td>Validación Cliente</td>
+<td>265</td>
+<td>3.37%</td>
+</tr>
+
+<tr>
+<td>Pre Evaluación</td>
+<td>310</td>
+<td>3.95%</td>
+</tr>
+
+<tr>
+<td>Evaluación</td>
+<td>3744</td>
+<td>47.65%</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+<!-- PRESENCIAL -->
+
+<div id="presencial" class="tab-content hidden">
+
+<div class="grid">
+
+<div class="panel">
+
+<h3>Principales Fugas</h3>
+
+<div class="loss">
+<div class="loss-top">
+<span>Evaluación</span>
+<span>60.52%</span>
+</div>
+<div class="loss-bar">
+<div class="loss-fill" style="width:60.52%"></div>
+</div>
+</div>
+
+<div class="loss">
+<div class="loss-top">
+<span>Validación INE</span>
+<span>9.02%</span>
+</div>
+<div class="loss-bar">
+<div class="loss-fill" style="width:9.02%"></div>
+</div>
+</div>
+
+</div>
+
+<div class="panel">
+
+<h3>Resultado General</h3>
+
+<div style="font-size:60px;color:var(--presencial);font-weight:bold;">
+15.65%
+</div>
+
+<p>Tasa de aprobación de solicitudes presenciales</p>
+
+</div>
+
+</div>
+
+<table>
+
+<thead>
+<tr>
+<th>Etapa</th>
+<th>Volumen</th>
+<th>%</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>Creación Solicitud</td>
+<td>768</td>
+<td>2.03%</td>
+</tr>
+
+<tr>
+<td>Validación INE</td>
+<td>3407</td>
+<td>9.02%</td>
+</tr>
+
+<tr>
+<td>F1</td>
+<td>17</td>
+<td>0.05%</td>
+</tr>
+
+<tr>
+<td>Validación Cliente</td>
+<td>2075</td>
+<td>5.49%</td>
+</tr>
+
+<tr>
+<td>Pre Evaluación</td>
+<td>423</td>
+<td>1.12%</td>
+</tr>
+
+<tr>
+<td>Evaluación</td>
+<td>22861</td>
+<td>60.52%</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<script>
+
+function showTab(tabId){
+
+document
+.querySelectorAll('.tab-content')
+.forEach(tab => tab.classList.add('hidden'));
+
+document
+.getElementById(tabId)
+.classList.remove('hidden');
+
+document
+.querySelectorAll('.tab')
+.forEach(btn => btn.classList.remove('active'));
+
+event.target.classList.add('active');
+
+}
+
+</script>
+
+</body>
+</html>
