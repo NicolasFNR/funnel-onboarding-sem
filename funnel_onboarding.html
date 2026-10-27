@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Funnel Onboarding México</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --digital:#00A86B;
+    --digital-light:#E8FBF3;
+
+    --presencial:#0078D4;
+    --presencial-light:#EDF6FF;
+
+    --danger:#EF4444;
+
+    --card:#FFFFFF;
+    --bg:#F5F7FB;
+
+    --border:#E5E7EB;
+    --text:#111827;
+    --text-secondary:#6B7280;
+
+    --shadow:0 10px 25px rgba(0,0,0,.06);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:var(--bg);
+    font-family:'Inter',sans-serif;
+    color:var(--text);
+}
+
+.container{
+    max-width:1600px;
+    margin:auto;
+    padding:25px;
+}
+
+/* HEADER */
+
+.hero{
+    background:linear-gradient(135deg,#0F172A,#1E293B);
+    color:white;
+    border-radius:24px;
+    padding:30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:var(--shadow);
+}
+
+.hero h1{
+    font-size:38px;
+}
+
+.hero p{
+    opacity:.75;
+    margin-top:5px;
+}
+
+.date-box{
+    background:rgba(255,255,255,.12);
+    padding:18px 25px;
+    border-radius:18px;
+    backdrop-filter:blur(12px);
+    text-align:center;
+}
+
+.date-box small{
+    opacity:.7;
+}
+
+/* KPI */
+
+.kpis{
+    margin-top:25px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.kpi{
+    background:white;
+    padding:24px;
+    border-radius:20px;
+    box-shadow:var(--shadow);
+}
+
+.kpi-title{
+    color:var(--text-secondary);
+    font-size:14px;
+}
+
+.kpi-value{
+    font-size:38px;
+    font-weight:800;
+    margin-top:10px;
+}
+
+.kpi-change{
+    color:var(--danger);
+    margin-top:8px;
+    font-weight:600;
+}
+
+/* COMPARACION */
+
+.section-title{
+    font-size:24px;
+    font-weight:700;
+    margin:35px 0 20px;
+}
+
+.comparison{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.compare-card{
+    background:white;
+    border-radius:24px;
+    padding:30px;
+    box-shadow:var(--shadow);
+}
+
+.badge{
+    padding:8px 15px;
+    color:white;
+    border-radius:20px;
+    display:inline-block;
+}
+
+.digital{
+    background:var(--digital);
+}
+
+.presencial{
+    background:var(--presencial);
+}
+
+.rate{
+    font-size:58px;
+    font-weight:800;
+    margin-top:15px;
+}
+
+.progress{
+    margin-top:20px;
+    background:#E5E7EB;
+    border-radius:20px;
+    overflow:hidden;
+    height:14px;
+}
+
+.progress-fill{
+    height:100%;
+}
+
+/* DETAILS */
+
+.detail-card{
+    margin-top:30px;
+    background:white;
+    border-radius:24px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+}
+
+/* TABS */
+
+.tabs{
+    display:flex;
+    border-bottom:1px solid var(--border);
+}
+
+.tab{
+    padding:18px 30px;
+    cursor:pointer;
+    font-weight:600;
+    transition:.3s;
+}
+
+.tab:hover{
+    background:#F8FAFC;
+}
+
+.tab.active{
+    color:#0078D4;
+    border-bottom:4px solid #0078D4;
+}
+
+/* CONTENT */
+
+.content{
+    padding:25px;
+}
+
+.summary{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.panel{
+    border-radius:18px;
+    padding:20px;
+}
+
+.panel.digital-panel{
+    background:var(--digital-light);
+}
+
+.panel.presencial-panel{
+    background:var(--presencial-light);
+}
+
+.panel h3{
+    margin-bottom:15px;
+}
+
+/* STAGES */
+
+.stage{
+    margin-bottom:15px;
+}
+
+.stage-row{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:5px;
+    font-size:14px;
+}
+
+.bar{
+    height:10px;
+    border-radius:20px;
+    overflow:hidden;
+    background:#D1D5DB;
+}
+
+.fill{
+    height:100%;
+}
+
+/* TABLE */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:25px;
+}
+
+th{
+    text-align:left;
+    color:var(--text-secondary);
+}
+
+th,td{
+    padding:14px;
+    border-bottom:1px solid #E5E7EB;
+}
+
+tbody tr:hover{
+    background:#F9FAFB;
+}
+
+.hidden{
+    display:none;
+}
+
+.fade{
+    animation:fade .3s;
+}
+
+@keyframes fade{
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@media(max-width:1100px){
+
+    .kpis{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .comparison,
+    .summary{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:20px;
+    }
+}
+
+@media(max-width:700px){
+
+    .kpis{
+        grid-template-columns:1fr;
+    }
+
+    .hero h1{
+        font-size:28px;
+    }
+
+    .rate{
+        font-size:42px;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="hero">
+        <div>
+            <h1>Funnel Onboarding México</h1>
+            <p>Reporte Ejecutivo Semanal</p>
+        </div>
+
+        <div class="date-box">
+            <small>SEMANA 43</small>
+            <h3>19 Oct - 27 Oct 2026</h3>
+        </div>
+    </div>
+
+    <div class="kpis">
+
+        <div class="kpi">
+            <div class="kpi-title">Solicitudes Digital</div>
+            <div class="kpi-value">7,857</div>
+            <div class="kpi-change">▼ 17.9%</div>
+        </div>
+
+        <div class="kpi">
+            <div class="kpi-title">Aprobados Digital</div>
+            <div class="kpi-value">518</div>
+            <div class="kpi-change">▼ 23.9%</div>
+        </div>
+
+        <div class="kpi">
+            <div class="kpi-title">Solicitudes Presencial</div>
+            <div class="kpi-value">37,775</div>
+            <div class="kpi-change">▼ 26.3%</div>
+        </div>
+
+        <div class="kpi">
+            <div class="kpi-title">Aprobados Presencial</div>
+            <div class="kpi-value">5,911</div>
+            <div class="kpi-change">▼ 29.6%</div>
+        </div>
+
+    </div>
+
+    <h2 class="section-title">Conversión por Canal</h2>
+
+    <div class="comparison">
+
+        <div class="compare-card">
+            <span class="badge digital">Digital</span>
+            <div class="rate">6.59%</div>
+
+            <div class="progress">
+                <div class="progress-fill"
+                    style="width:42%;background:var(--digital)">
+                </div>
+            </div>
+        </div>
+
+        <div class="compare-card">
+            <span class="badge presencial">Presencial</span>
+            <div class="rate">15.65%</div>
+
+            <div class="progress">
+                <div class="progress-fill"
+                    style="width:100%;background:var(--presencial)">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="detail-card">
+
+        <div class="tabs">
+
+            <div class="tab active" data-target="digital-content">
+                Digital
+            </div>
+
+            <div class="tab" data-target="presencial-content">
+                Presencial
+            </div>
+
+        </div>
+
+        <!-- DIGITAL -->
+
+        <div id="digital-content" class="content fade">
+
+            <div class="summary">
+
+                <div class="panel digital-panel">
+
+                    <h3>Principales Pérdidas</h3>
+
+                    <div class="stage">
+                        <div class="stage-row">
+                            <span>Evaluación</span>
+                            <strong>47.65%</strong>
+                        </div>
+
+                        <div class="bar">
+                            <div class="fill"
+                            style="width:47.65%;background:#EF4444"></div>
+                        </div>
+                    </div>
+
+                    <div class="stage">
+                        <div class="stage-row">
+                            <span>Creación Solicitud</span>
+                            <strong>35.62%</strong>
+                        </div>
+
+                        <div class="bar">
+                            <div class="fill"
+                            style="width:35.62%;background:#EF4444"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="panel digital-panel">
+
+                    <h3>Conversión</h3>
+
+                    <div style="font-size:52px;font-weight:700;color:var(--digital)">
+                        6.59%
+                    </div>
+
+                    <p>Tasa de aprobación Digital</p>
+
+                </div>
+
+            </div>
+
+            <table>
+                <thead>
+                <tr>
+                    <th>Etapa</th>
+                    <th>Volumen</th>
+                    <th>%</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                    <tr><td>01. Creación Solicitud</td><td>2,799</td><td>35.62%</td></tr>
+                    <tr><td>02. Validación INE</td><td>72</td><td>0.92%</td></tr>
+                    <tr><td>03. F1</td><td>59</td><td>0.75%</td></tr>
+                    <tr><td>03.1 Validación Cliente</td><td>265</td><td>3.37%</td></tr>
+                    <tr><td>04. Pre Evaluación</td><td>310</td><td>3.95%</td></tr>
+                    <tr><td>05. Evaluación</td><td>3744</td><td>47.65%</td></tr>
+                    <tr><td>09. Flujo Completo</td><td>518</td><td>6.59%</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- PRESENCIAL -->
+
+        <div id="presencial-content" class="content hidden">
+
+            <div class="summary">
+
+                <div class="panel presencial-panel">
+
+                    <h3>Principales Pérdidas</h3>
+
+                    <div class="stage">
+                        <div class="stage-row">
+                            <span>Evaluación</span>
+                            <strong>60.52%</strong>
+                        </div>
+
+                        <div class="bar">
+                            <div class="fill"
+                            style="width:60.52%;background:#EF4444"></div>
+                        </div>
+                    </div>
+
+                    <div class="stage">
+                        <div class="stage-row">
+                            <span>Validación INE</span>
+                            <strong>9.02%</strong>
+                        </div>
+
+                        <div class="bar">
+                            <div class="fill"
+                            style="width:9.02%;background:#EF4444"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="panel presencial-panel">
+
+                    <h3>Conversión</h3>
+
+                    <div style="font-size:52px;font-weight:700;color:var(--presencial)">
+                        15.65%
+                    </div>
+
+                    <p>Tasa de aprobación Presencial</p>
+
+                </div>
+
+            </div>
+
+            <table>
+                <thead>
+                <tr>
+                    <th>Etapa</th>
+                    <th>Volumen</th>
+                    <th>%</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                    <tr><td>01. Creación Solicitud</td><td>768</td><td>2.03%</td></tr>
+                    <tr><td>02. Validación INE</td><td>3407</td><td>9.02%</td></tr>
+                    <tr><td>03. F1</td><td>17</td><td>0.05%</td></tr>
+                    <tr><td>03.1 Validación Cliente</td><td>2075</td><td>5.49%</td></tr>
+                    <tr><td>04. Pre Evaluación</td><td>423</td><td>1.12%</td></tr>
+                    <tr><td>05. Evaluación</td><td>22861</td><td>60.52%</td></tr>
+                    <tr><td>09. Flujo Completo</td><td>5911</td><td>15.65%</td></tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+const tabs = document.querySelectorAll('.tab');
+
+tabs.forEach(tab=>{
+
+    tab.addEventListener('click',()=>{
+
+        tabs.forEach(t=>t.classList.remove('active'));
+
+        tab.classList.add('active');
+
+        document
+            .querySelectorAll('#digital-content,#presencial-content')
+            .forEach(c=>{
+                c.classList.add('hidden');
+            });
+
+        const target = document.getElementById(
+            tab.dataset.target
+        );
+
+        target.classList.remove('hidden');
+        target.classList.add('fade');
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
