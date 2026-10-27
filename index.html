@@ -98,7 +98,6 @@ body{
     padding:25px;
     transition:.25s;
     border-left:5px solid transparent;
-    background:var(--card);
     color:var(--text);
 }
 
@@ -135,7 +134,7 @@ body{
 }
 
 .compare-card{
-    background:white;
+    background:var(--card);
     box-shadow:var(--shadow);
     padding:25px;
     border-radius:18px;
@@ -183,7 +182,8 @@ body{
 
 .tab{
     border:none;
-    background:white;
+    background:var(--card);
+    color:var(--text);
     padding:14px 25px;
     border-radius:12px;
     cursor:pointer;
@@ -202,12 +202,10 @@ body{
 }
 
 @keyframes fade{
-
     from{
         opacity:0;
         transform:translateY(12px);
     }
-
     to{
         opacity:1;
         transform:translateY(0);
@@ -228,7 +226,6 @@ body{
 }
 
 .panel{
-    background:white;
     padding:25px;
     border-radius:16px;
     box-shadow:var(--shadow);
@@ -268,7 +265,6 @@ table{
     width:100%;
     border-collapse:collapse;
     margin-top:25px;
-    background:white;
     border-radius:16px;
     overflow:hidden;
     box-shadow:var(--shadow);
@@ -286,46 +282,33 @@ th{
 }
 
 tr{
-    border-bottom:1px solid #ececec;
+    border-bottom:1px solid rgba(0,0,0,0.1);
+}
+
+[data-theme="dark"] tr{
+    border-bottom:1px solid rgba(255,255,255,0.1);
 }
 
 tr:hover{
-    background:#f9fafb;
+    background:rgba(0,0,0,0.02);
+}
+
+[data-theme="dark"] tr:hover{
+    background:rgba(255,255,255,0.05);
 }
 
 @media(max-width:1000px){
-
-.kpis{
-grid-template-columns:1fr 1fr;
-}
-
-.compare{
-grid-template-columns:1fr;
-}
-
-.grid{
-grid-template-columns:1fr;
-}
-
+    .kpis{ grid-template-columns:1fr 1fr; }
+    .compare{ grid-template-columns:1fr; }
+    .grid{ grid-template-columns:1fr; }
 }
 
 @media(max-width:700px){
-
-.kpis{
-grid-template-columns:1fr;
+    .kpis{ grid-template-columns:1fr; }
+    .header{ flex-direction:column; align-items:flex-start; gap:20px; }
+    .rate{ font-size:42px; }
 }
 
-.header{
-flex-direction:column;
-align-items:flex-start;
-gap:20px;
-}
-
-.rate{
-font-size:42px;
-}
-
-}
 .theme-btn{
     border:none;
     background:white;
@@ -354,7 +337,6 @@ font-size:42px;
 <h1>Funnel Onboarding México</h1>
 <p>Dashboard Ejecutivo Semanal</p>
 </div>
-
 
 <div class="week">
 <strong>SEMANA 43</strong><br>
@@ -460,8 +442,8 @@ Resumen Ejecutivo
 
     </div>
 </div>
-<!-- DIGITAL -->
 
+<!-- DIGITAL -->
 <div id="digital" class="tab-content">
 
 <div class="grid">
@@ -561,7 +543,6 @@ Resumen Ejecutivo
 </div>
 
 <!-- PRESENCIAL -->
-
 <div id="presencial" class="tab-content hidden">
 
 <div class="grid">
@@ -663,100 +644,60 @@ Resumen Ejecutivo
 </div>
 
 <script>
-
 function showTab(tabId){
-
-    document.querySelectorAll('.tab-content').forEach(content=>{
+    document.querySelectorAll('.tab-content').forEach(content => {
         content.classList.add('hidden');
     });
 
     document.getElementById(tabId).classList.remove('hidden');
 
-    document.querySelectorAll('.tab').forEach(btn=>{
+    document.querySelectorAll('.tab').forEach(btn => {
         btn.classList.remove('active');
     });
 
-    document.querySelector(`[data-tab="${tabId}"]`)
-        .classList.add('active');
+    document.querySelector(`[data-tab="${tabId}"]`).classList.add('active');
 }
 
-/* Carga inicial */
-
-document.addEventListener('DOMContentLoaded',()=>{
-
+document.addEventListener('DOMContentLoaded', () => {
+    // Tabs
     showTab('digital');
-
-    document.querySelectorAll('.tab').forEach(tab=>{
-
-        tab.addEventListener('click',()=>{
-
-            showTab(
-                tab.dataset.tab
-            );
-
+    document.querySelectorAll('.tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            showTab(tab.dataset.tab);
         });
-
     });
 
-});
-const themeBtn = document.getElementById("themeToggle");
+    // Tema Oscuro / Claro
+    const themeBtn = document.getElementById("themeToggle");
+    const savedTheme = localStorage.getItem("theme");
 
-themeBtn.addEventListener("click", () => {
+    const updateButtonText = (isDark) => {
+        themeBtn.innerHTML = isDark ? "☀️ Modo Claro" : "🌙 Modo Oscuro";
+    };
 
-    const currentTheme =
-        document.documentElement.getAttribute("data-theme");
-
-    if(currentTheme === "dark"){
-
+    if (savedTheme === "dark") {
+        document.documentElement.setAttribute("data-theme", "dark");
+        updateButtonText(true);
+    } else {
         document.documentElement.removeAttribute("data-theme");
-
-        themeBtn.innerHTML =
-            "🌙 Modo Oscuro";
-
-    }else{
-
-        document.documentElement.setAttribute(
-            "data-theme",
-            "dark"
-        );
-
-        themeBtn.innerHTML =
-            "☀️ Modo Claro";
+        updateButtonText(false);
     }
 
+    themeBtn.addEventListener("click", () => {
+        const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+
+        if (isDark) {
+            document.documentElement.removeAttribute("data-theme");
+            localStorage.setItem("theme", "light");
+            updateButtonText(false);
+        } else {
+            document.documentElement.setAttribute("data-theme", "dark");
+            localStorage.setItem("theme", "dark");
+            updateButtonText(true);
+        }
+    });
 });
-
-const savedTheme = localStorage.getItem("theme");
-
-if(savedTheme){
-    document.documentElement.setAttribute(
-        "data-theme",
-        savedTheme
-    );
-}
-
-themeBtn.addEventListener("click",()=>{
-
-    const dark =
-        document.documentElement.getAttribute("data-theme")==="dark";
-
-    if(dark){
-
-        document.documentElement.removeAttribute("data-theme");
-        localStorage.setItem("theme","light");
-        themeBtn.innerHTML="🌙 Modo Oscuro";
-
-    }else{
-
-        document.documentElement.setAttribute("data-theme","dark");
-        localStorage.setItem("theme","dark");
-        themeBtn.innerHTML="☀️ Modo Claro";
-
-    }
-});
-
 </script>
-
 
 </body>
 </html>
