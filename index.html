@@ -9,6 +9,7 @@
 --digital:#0ea5a4;
 --presencial:#2563eb;
 --danger:#ef4444;
+--warning:#f59e0b;
 --success:#22c55e;
 --bg:#f4f7fb;
 --card:#ffffff;
@@ -20,6 +21,7 @@
 --digital:#14b8a6;
 --presencial:#3b82f6;
 --danger:#ef4444;
+--warning:#f59e0b;
 --success:#22c55e;
 --bg:#111827;
 --card:#1f2937;
@@ -27,7 +29,7 @@
 --secondary:#9ca3af;
 --shadow:0 4px 20px rgba(0,0,0,.35);
 }
-{
+*{
 margin:0;
 padding:0;
 box-sizing:border-box;
@@ -45,7 +47,7 @@ width:100vw;
 max-width:100vw;
 padding:20px 30px;
 }
-/* HEADER /
+/* HEADER */
 .header{
 background:linear-gradient(135deg,#0f172a,#1e293b);
 color:white;
@@ -67,7 +69,7 @@ padding:15px 20px;
 border-radius:12px;
 text-align:center;
 }
-/* KPIS /
+/* KPIS */
 .kpis{
 margin-top:25px;
 display:grid;
@@ -95,52 +97,20 @@ font-size:36px;
 font-weight:700;
 }
 .change{
-color:var(--danger);
 margin-top:10px;
 }
-/* COMPARATIVO /
+.change.danger{
+color:var(--danger);
+}
+.change.success{
+color:var(--success);
+}
+/* SECTIONS */
 .section-title{
 margin:35px 0 20px;
 font-size:28px;
 }
-.compare{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:20px;
-}
-.compare-card{
-background:var(--card);
-box-shadow:var(--shadow);
-padding:25px;
-border-radius:18px;
-}
-.badge{
-display:inline-block;
-color:white;
-padding:8px 15px;
-border-radius:30px;
-}
-.digital{
-background:var(--digital);
-}
-.presencial{
-background:var(--presencial);
-}
-.rate{
-font-size:60px;
-font-weight:bold;
-margin:15px 0;
-}
-.progress{
-height:14px;
-background:#e5e7eb;
-border-radius:20px;
-overflow:hidden;
-}
-.progress-fill{
-height:100%;
-}
-/* TABS /
+/* TABS */
 .tabs{
 display:flex;
 margin-top:30px;
@@ -177,7 +147,7 @@ transform:translateY(0);
 .hidden{
 display:none;
 }
-/* PANELS /
+/* PANELS & GRIDS */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
@@ -212,45 +182,108 @@ background:var(--danger);
 height:100%;
 border-radius:30px;
 }
-/* TABLE /
-table{
-width:100%;
-border-collapse:collapse;
-margin-top:25px;
-border-radius:16px;
-overflow:hidden;
-box-shadow:var(--shadow);
-background:var(--card);
-color:var(--text);
+
+/* TIMELINE DESGLOSE */
+.timeline-container {
+background: var(--card);
+padding: 30px;
+border-radius: 16px;
+box-shadow: var(--shadow);
+margin-top: 25px;
 }
-th,td{
-padding:15px;
-text-align:left;
+.timeline {
+position: relative;
+padding-left: 30px;
+margin-top: 20px;
 }
-th{
-background:rgba(255,255,255,.05);
+.timeline::before {
+content: '';
+position: absolute;
+left: 7px;
+top: 5px;
+bottom: 5px;
+width: 3px;
+background: var(--secondary);
+opacity: 0.3;
 }
-tr{
-border-bottom:1px solid rgba(0,0,0,0.1);
+.timeline-item {
+position: relative;
+margin-bottom: 25px;
 }
-[data-theme="dark"] tr{
-border-bottom:1px solid rgba(255,255,255,0.1);
+.timeline-item:last-child {
+margin-bottom: 0;
 }
-tr:hover{
-background:rgba(0,0,0,0.02);
+.timeline-dot {
+position: absolute;
+left: -30px;
+top: 4px;
+width: 17px;
+height: 17px;
+border-radius: 50%;
+background: var(--secondary);
+border: 3px solid var(--card);
+box-shadow: 0 0 0 2px var(--secondary);
 }
-[data-theme="dark"] tr:hover{
-background:rgba(255,255,255,0.05);
+.timeline-item.danger .timeline-dot {
+background: var(--danger);
+box-shadow: 0 0 0 2px var(--danger);
 }
+.timeline-item.warning .timeline-dot {
+background: var(--warning);
+box-shadow: 0 0 0 2px var(--warning);
+}
+.timeline-item.success .timeline-dot {
+background: var(--success);
+box-shadow: 0 0 0 2px var(--success);
+}
+.timeline-content {
+background: rgba(0,0,0,0.015);
+padding: 15px 20px;
+border-radius: 12px;
+border: 1px solid rgba(0,0,0,0.05);
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+gap: 10px;
+}
+[data-theme="dark"] .timeline-content {
+background: rgba(255,255,255,0.02);
+border: 1px solid rgba(255,255,255,0.05);
+}
+.timeline-title {
+font-weight: 600;
+font-size: 16px;
+}
+.timeline-stats {
+display: flex;
+gap: 15px;
+font-size: 15px;
+}
+.timeline-volume {
+color: var(--secondary);
+}
+.timeline-porc {
+font-weight: bold;
+}
+.timeline-item.danger .timeline-porc {
+color: var(--danger);
+}
+.timeline-item.warning .timeline-porc {
+color: var(--warning);
+}
+.timeline-item.success .timeline-porc {
+color: var(--success);
+}
+
 @media(max-width:1000px){
 .kpis{ grid-template-columns:1fr 1fr; }
-.compare{ grid-template-columns:1fr; }
 .grid{ grid-template-columns:1fr; }
 }
 @media(max-width:700px){
 .kpis{ grid-template-columns:1fr; }
 .header{ flex-direction:column; align-items:flex-start; gap:20px; }
-.rate{ font-size:42px; }
+.timeline-content{ flex-direction:column; align-items:flex-start; }
 }
 .theme-btn{
 border:none;
@@ -277,87 +310,58 @@ opacity:.9;
 <p>Dashboard Ejecutivo Semanal</p>
 </div>
 <div class="week">
-<strong>SEMANA 43</strong><br>
-19 Oct - 27 Oct 2026
+<strong>SEMANA ACTUAL</strong><br>
+28 Oct - 04 Nov 2026
 </div>
 </div>
+
 <div class="kpis">
 <div class="card" style="border-left-color:var(--digital)">
 <h4>Solicitudes Digital</h4>
-<div class="value">7,857</div>
-<div class="change">▼ -17.9%</div>
+<div class="value">8,185</div>
+<div class="change danger">▼ -0.4%</div>
 </div>
 <div class="card" style="border-left-color:var(--digital)">
 <h4>Aprobados Digital</h4>
-<div class="value">518</div>
-<div class="change">▼ -23.9%</div>
+<div class="value">515</div>
+<div class="change success">▲ +7.5%</div>
 </div>
 <div class="card" style="border-left-color:var(--presencial)">
 <h4>Solicitudes Presencial</h4>
-<div class="value">37,775</div>
-<div class="change">▼ -26.3%</div>
+<div class="value">34,653</div>
+<div class="change danger">▼ -16.0%</div>
 </div>
 <div class="card" style="border-left-color:var(--presencial)">
 <h4>Aprobados Presencial</h4>
-<div class="value">5,911</div>
-<div class="change">▼ -29.6%</div>
+<div class="value">5,696</div>
+<div class="change danger">▼ -12.4%</div>
 </div>
 </div>
-<h2 class="section-title">
-Resumen Ejecutivo
-</h2>
+
+<h2 class="section-title">Resumen Ejecutivo</h2>
 <div class="grid">
 <div class="panel">
-<h3>
-Mejor Canal de Conversión
-</h3>
-<div style="
-font-size:56px;
-font-weight:bold;
-color:var(--presencial);
-">
-15.65%
+<h3>Mejor Canal de Conversión</h3>
+<div style="font-size:56px;font-weight:bold;color:var(--presencial);">
+16.44%
 </div>
-<p>
-El canal Presencial continúa liderando
-el funnel de onboarding con una tasa de
-aprobación más de dos veces superior al
-canal Digital.
-</p>
+<p>El canal Presencial continúa liderando el funnel de onboarding con una tasa de aprobación superior al canal Digital (6.29%)[span_0](start_span)[span_0](end_span).</p>
 </div>
 <div class="panel">
-<h3>
-Principal Punto de Fuga
-</h3>
-<div style="
-font-size:56px;
-font-weight:bold;
-color:var(--danger);
-">
-60.52%
+<h3>Principal Punto de Fuga</h3>
+<div style="font-size:56px;font-weight:bold;color:var(--danger);">
+59.52%
 </div>
-<p>
-La etapa de Evaluación concentra la
-mayor cantidad de pérdidas durante
-la semana analizada.
-</p>
+<p>La etapa de Evaluación concentra la mayor cantidad de pérdidas durante la semana analizada en el canal Presencial[span_1](start_span)[span_1](end_span).</p>
 </div>
 </div>
-<div> <h2 class="section-title">Conversión por Canal</h2> </div>
-<div>
+
+<h2 class="section-title">Conversión por Canal</h2>
 <div class="tabs">
-<button
-class="tab active"
-data-tab="digital">
-Digital
-</button>
-<button
-class="tab"
-data-tab="presencial">
-Presencial
-</button>
+<button class="tab active" data-tab="digital">Digital</button>
+<button class="tab" data-tab="presencial">Presencial</button>
 </div>
-</div>
+
 <!-- DIGITAL -->
 <div id="digital" class="tab-content">
 <div class="grid">
@@ -365,73 +369,130 @@ Presencial
 <h3>Principales Fugas</h3>
 <div class="loss">
 <div class="loss-top">
-<span>Evaluación</span>
-<span>47.65%</span>
+<span>Evaluación (E2)</span>
+<span>47.82%</span>
 </div>
 <div class="loss-bar">
-<div class="loss-fill" style="width:47.65%"></div>
+<div class="loss-fill" style="width:47.82%"></div>
 </div>
 </div>
 <div class="loss">
 <div class="loss-top">
 <span>Creación Solicitud</span>
-<span>35.62%</span>
+<span>36.00%</span>
 </div>
 <div class="loss-bar">
-<div class="loss-fill" style="width:35.62%"></div>
+<div class="loss-fill" style="width:36.00%"></div>
 </div>
 </div>
 </div>
 <div class="panel">
 <h3>Resultado General</h3>
 <div style="font-size:60px;color:var(--digital);font-weight:bold;">
-6.59%
+6.29%
 </div>
 <p>Tasa de aprobación de solicitudes digitales</p>
 </div>
 </div>
-<table>
-<thead>
-<tr>
-<th>Etapa</th>
-<th>Volumen</th>
-<th>%</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Creación Solicitud</td>
-<td>2,799</td>
-<td>35.62%</td>
-</tr>
-<tr>
-<td>Validación INE</td>
-<td>72</td>
-<td>0.92%</td>
-</tr>
-<tr>
-<td>F1</td>
-<td>59</td>
-<td>0.75%</td>
-</tr>
-<tr>
-<td>Validación Cliente</td>
-<td>265</td>
-<td>3.37%</td>
-</tr>
-<tr>
-<td>Pre Evaluación</td>
-<td>310</td>
-<td>3.95%</td>
-</tr>
-<tr>
-<td>Evaluación</td>
-<td>3744</td>
-<td>47.65%</td>
-</tr>
-</tbody>
-</table>
+
+<!-- TIMELINE DIGITAL -->
+<div class="timeline-container">
+<h3>Línea de Tiempo del Proceso - Digital</h3>
+<div class="timeline">
+<div class="timeline-item danger">
+<div class="timeline-dot"></div>
+<div class="timeline-content">
+<span class="timeline-title">01. Creación Solicitud</span>
+<div class="timeline-stats">
+<span class="timeline-volume">Volumen: 2,947</span>
+<span class="timeline-porc">36.00%</span>
 </div>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-dot"></div>
+<div class="timeline-content">
+<span class="timeline-title">02. Validación INE</span>
+<div class="timeline-stats">
+<span class="timeline-volume">Volumen: 85</span>
+<span class="timeline-porc">1.04%</span>
+</div>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-dot"></div>
+<div class="timeline-content">
+<span class="timeline-title">03. F1</span>
+<div class="timeline-stats">
+<span class="timeline-volume">Volumen: 56</span>
+<span class="timeline-porc">0.68%</span>
+</div>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-dot"></div>
+<div class="timeline-content">
+<span class="timeline-title">03.1 Validación Cliente</span>
+<div class="timeline-stats">
+<span class="timeline-volume">Volumen: 281</span>
+<span class="timeline-porc">3.43%</span>
+</div>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-dot"></div>
+<div class="timeline-content">
+<span class="timeline-title">04. Pre Evaluación (E1)</span>
+<div class="timeline-stats">
+<span class="timeline-volume">Volumen: 301</span>
+<span class="timeline-porc">3.68%</span>
+</div>
+</div>
+</div>
+<div class="timeline-item danger">
+<div class="timeline-dot"></div>
+<div class="timeline-content">
+<span class="timeline-title">05. Evaluación (E2)</span>
+<div class="timeline-stats">
+<span class="timeline-volume">Volumen: 3,914</span>
+<span class="timeline-porc">47.82%</span>
+</div>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-dot"></div>
+<div class="timeline-content">
+<span class="timeline-title">06. Full Fraudes</span>
+<div class="timeline-stats">
+<span class="timeline-volume">Volumen: 17</span>
+<span class="timeline-porc">0.21%</span>
+</div>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-dot"></div>
+<div class="timeline-content">
+<span class="timeline-title">07. Backoffice</span>
+<div class="timeline-stats">
+<span class="timeline-volume">Volumen: 69</span>
+<span class="timeline-porc">0.84%</span>
+</div>
+</div>
+</div>
+<div class="timeline-item success">
+<div class="timeline-dot"></div>
+<div class="timeline-content">
+<span class="timeline-title">09. Flujo Completo (Aprobados)</span>
+<div class="timeline-stats">
+<span class="timeline-volume">Volumen: 515</span>
+<span class="timeline-porc">6.29%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
 <!-- PRESENCIAL -->
 <div id="presencial" class="tab-content hidden">
 <div class="grid">
@@ -439,73 +500,130 @@ Presencial
 <h3>Principales Fugas</h3>
 <div class="loss">
 <div class="loss-top">
-<span>Evaluación</span>
-<span>60.52%</span>
+<span>Evaluación (E2)</span>
+<span>59.52%</span>
 </div>
 <div class="loss-bar">
-<div class="loss-fill" style="width:60.52%"></div>
+<div class="loss-fill" style="width:59.52%"></div>
 </div>
 </div>
 <div class="loss">
 <div class="loss-top">
 <span>Validación INE</span>
-<span>9.02%</span>
+<span>8.81%</span>
 </div>
 <div class="loss-bar">
-<div class="loss-fill" style="width:9.02%"></div>
+<div class="loss-fill" style="width:8.81%"></div>
 </div>
 </div>
 </div>
 <div class="panel">
 <h3>Resultado General</h3>
 <div style="font-size:60px;color:var(--presencial);font-weight:bold;">
-15.65%
+16.44%
 </div>
 <p>Tasa de aprobación de solicitudes presenciales</p>
 </div>
 </div>
-<table>
-<thead>
-<tr>
-<th>Etapa</th>
-<th>Volumen</th>
-<th>%</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Creación Solicitud</td>
-<td>768</td>
-<td>2.03%</td>
-</tr>
-<tr>
-<td>Validación INE</td>
-<td>3407</td>
-<td>9.02%</td>
-</tr>
-<tr>
-<td>F1</td>
-<td>17</td>
-<td>0.05%</td>
-</tr>
-<tr>
-<td>Validación Cliente</td>
-<td>2075</td>
-<td>5.49%</td>
-</tr>
-<tr>
-<td>Pre Evaluación</td>
-<td>423</td>
-<td>1.12%</td>
-</tr>
-<tr>
-<td>Evaluación</td>
-<td>22861</td>
-<td>60.52%</td>
-</tr>
-</tbody>
-</table>
+
+<!-- TIMELINE PRESENCIAL -->
+<div class="timeline-container">
+<h3>Línea de Tiempo del Proceso - Presencial</h3>
+<div class="timeline">
+<div class="timeline-item">
+<div class="timeline-dot"></div>
+<div class="timeline-content">
+<span class="timeline-title">01. Creación Solicitud</span>
+<div class="timeline-stats">
+<span class="timeline-volume">Volumen: 782</span>
+<span class="timeline-porc">2.26%</span>
 </div>
+</div>
+</div>
+<div class="timeline-item warning">
+<div class="timeline-dot"></div>
+<div class="timeline-content">
+<span class="timeline-title">02. Validación INE</span>
+<div class="timeline-stats">
+<span class="timeline-volume">Volumen: 3,054</span>
+<span class="timeline-porc">8.81%</span>
+</div>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-dot"></div>
+<div class="timeline-content">
+<span class="timeline-title">03. F1</span>
+<div class="timeline-stats">
+<span class="timeline-volume">Volumen: 16</span>
+<span class="timeline-porc">0.05%</span>
+</div>
+</div>
+</div>
+<div class="timeline-item warning">
+<div class="timeline-dot"></div>
+<div class="timeline-content">
+<span class="timeline-title">03.1 Validación Cliente</span>
+<div class="timeline-stats">
+<span class="timeline-volume">Volumen: 2,110</span>
+<span class="timeline-porc">6.09%</span>
+</div>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-dot"></div>
+<div class="timeline-content">
+<span class="timeline-title">04. Pre Evaluación (E1)</span>
+<div class="timeline-stats">
+<span class="timeline-volume">Volumen: 312</span>
+<span class="timeline-porc">0.90%</span>
+</div>
+</div>
+</div>
+<div class="timeline-item danger">
+<div class="timeline-dot"></div>
+<div class="timeline-content">
+<span class="timeline-title">05. Evaluación (E2)</span>
+<div class="timeline-stats">
+<span class="timeline-volume">Volumen: 20,626</span>
+<span class="timeline-porc">59.52%</span>
+</div>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-dot"></div>
+<div class="timeline-content">
+<span class="timeline-title">07. Backoffice</span>
+<div class="timeline-stats">
+<span class="timeline-volume">Volumen: 225</span>
+<span class="timeline-porc">0.65%</span>
+</div>
+</div>
+</div>
+<div class="timeline-item warning">
+<div class="timeline-dot"></div>
+<div class="timeline-content">
+<span class="timeline-title">08. Pendiente de Retome</span>
+<div class="timeline-stats">
+<span class="timeline-volume">Volumen: 1,832</span>
+<span class="timeline-porc">5.29%</span>
+</div>
+</div>
+</div>
+<div class="timeline-item success">
+<div class="timeline-dot"></div>
+<div class="timeline-content">
+<span class="timeline-title">09. Flujo Completo (Aprobados)</span>
+<div class="timeline-stats">
+<span class="timeline-volume">Volumen: 5,696</span>
+<span class="timeline-porc">16.44%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
 </div>
 <script>
 function showTab(tabId){
@@ -519,14 +637,13 @@ btn.classList.remove('active');
 document.querySelector(`[data-tab="${tabId}"]`).classList.add('active');
 }
 document.addEventListener('DOMContentLoaded', () => {
-// Tabs
 showTab('digital');
 document.querySelectorAll('.tab').forEach(tab => {
 tab.addEventListener('click', () => {
 showTab(tab.dataset.tab);
 });
 });
-// Tema Oscuro / Claro
+
 const themeBtn = document.getElementById("themeToggle");
 const savedTheme = localStorage.getItem("theme");
 const updateButtonText = (isDark) => {
