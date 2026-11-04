@@ -16,7 +16,6 @@
 --secondary:#6b7280;
 --shadow:0 4px 20px rgba(0,0,0,.08);
 }
-  
 [data-theme="dark"]{
 --digital:#14b8a6;
 --presencial:#3b82f6;
@@ -28,7 +27,7 @@
 --secondary:#9ca3af;
 --shadow:0 4px 20px rgba(0,0,0,.35);
 }
-*{
+{
 margin:0;
 padding:0;
 box-sizing:border-box;
@@ -46,7 +45,7 @@ width:100vw;
 max-width:100vw;
 padding:20px 30px;
 }
-/* HEADER */
+/* HEADER /
 .header{
 background:linear-gradient(135deg,#0f172a,#1e293b);
 color:white;
@@ -68,7 +67,7 @@ padding:15px 20px;
 border-radius:12px;
 text-align:center;
 }
-/* KPIS */
+/* KPIS /
 .kpis{
 margin-top:25px;
 display:grid;
@@ -96,15 +95,10 @@ font-size:36px;
 font-weight:700;
 }
 .change{
+color:var(--danger);
 margin-top:10px;
 }
-.change.danger{
-color:var(--danger);
-}
-.change.success{
-color:var(--success);
-}
-/* COMPARATIVO */
+/* COMPARATIVO /
 .section-title{
 margin:35px 0 20px;
 font-size:28px;
@@ -146,7 +140,7 @@ overflow:hidden;
 .progress-fill{
 height:100%;
 }
-/* TABS */
+/* TABS /
 .tabs{
 display:flex;
 margin-top:30px;
@@ -183,7 +177,7 @@ transform:translateY(0);
 .hidden{
 display:none;
 }
-/* PANELS */
+/* PANELS /
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
@@ -218,7 +212,7 @@ background:var(--danger);
 height:100%;
 border-radius:30px;
 }
-/* TABLE */
+/* TABLE /
 table{
 width:100%;
 border-collapse:collapse;
@@ -283,34 +277,32 @@ opacity:.9;
 <p>Dashboard Ejecutivo Semanal</p>
 </div>
 <div class="week">
-<strong>SEMANA ACTUAL</strong><br>
-28 Oct - 04 Nov 2026
+<strong>SEMANA 43</strong><br>
+19 Oct - 27 Oct 2026
 </div>
 </div>
-
 <div class="kpis">
 <div class="card" style="border-left-color:var(--digital)">
 <h4>Solicitudes Digital</h4>
-<div class="value">8,185</div>
-<div class="change danger">▼ -0.4%</div>
+<div class="value">7,857</div>
+<div class="change">▼ -17.9%</div>
 </div>
 <div class="card" style="border-left-color:var(--digital)">
 <h4>Aprobados Digital</h4>
-<div class="value">515</div>
-<div class="change success">▲ +7.5%</div>
+<div class="value">518</div>
+<div class="change">▼ -23.9%</div>
 </div>
 <div class="card" style="border-left-color:var(--presencial)">
 <h4>Solicitudes Presencial</h4>
-<div class="value">34,653</div>
-<div class="change danger">▼ -16.0%</div>
+<div class="value">37,775</div>
+<div class="change">▼ -26.3%</div>
 </div>
 <div class="card" style="border-left-color:var(--presencial)">
 <h4>Aprobados Presencial</h4>
-<div class="value">5,696</div>
-<div class="change danger">▼ -12.4%</div>
+<div class="value">5,911</div>
+<div class="change">▼ -29.6%</div>
 </div>
 </div>
-
 <h2 class="section-title">
 Resumen Ejecutivo
 </h2>
@@ -324,12 +316,13 @@ font-size:56px;
 font-weight:bold;
 color:var(--presencial);
 ">
-16.44%
+15.65%
 </div>
 <p>
 El canal Presencial continúa liderando
 el funnel de onboarding con una tasa de
-aprobación superior al canal Digital (6.29%)[span_1](start_span)[span_1](end_span).
+aprobación más de dos veces superior al
+canal Digital.
 </p>
 </div>
 <div class="panel">
@@ -341,16 +334,15 @@ font-size:56px;
 font-weight:bold;
 color:var(--danger);
 ">
-59.52%
+60.52%
 </div>
 <p>
 La etapa de Evaluación concentra la
 mayor cantidad de pérdidas durante
-la semana analizada en el canal Presencial[span_2](start_span)[span_2](end_span).
+la semana analizada.
 </p>
 </div>
 </div>
-
 <div> <h2 class="section-title">Conversión por Canal</h2> </div>
 <div>
 <div class="tabs">
@@ -366,7 +358,6 @@ Presencial
 </button>
 </div>
 </div>
-
 <!-- DIGITAL -->
 <div id="digital" class="tab-content">
 <div class="grid">
@@ -374,27 +365,27 @@ Presencial
 <h3>Principales Fugas</h3>
 <div class="loss">
 <div class="loss-top">
-<span>Evaluación (E2)</span>
-<span>47.82%</span>
+<span>Evaluación</span>
+<span>47.65%</span>
 </div>
 <div class="loss-bar">
-<div class="loss-fill" style="width:47.82%"></div>
+<div class="loss-fill" style="width:47.65%"></div>
 </div>
 </div>
 <div class="loss">
 <div class="loss-top">
 <span>Creación Solicitud</span>
-<span>36.00%</span>
+<span>35.62%</span>
 </div>
 <div class="loss-bar">
-<div class="loss-fill" style="width:36.00%"></div>
+<div class="loss-fill" style="width:35.62%"></div>
 </div>
 </div>
 </div>
 <div class="panel">
 <h3>Resultado General</h3>
 <div style="font-size:60px;color:var(--digital);font-weight:bold;">
-6.29%
+6.59%
 </div>
 <p>Tasa de aprobación de solicitudes digitales</p>
 </div>
@@ -409,54 +400,38 @@ Presencial
 </thead>
 <tbody>
 <tr>
-<td>01. Creación Solicitud</td>
-<td>2,947</td>
-<td>36.00%</td>
+<td>Creación Solicitud</td>
+<td>2,799</td>
+<td>35.62%</td>
 </tr>
 <tr>
-<td>02. Validación INE</td>
-<td>85</td>
-<td>1.04%</td>
+<td>Validación INE</td>
+<td>72</td>
+<td>0.92%</td>
 </tr>
 <tr>
-<td>03. F1</td>
-<td>56</td>
-<td>0.68%</td>
+<td>F1</td>
+<td>59</td>
+<td>0.75%</td>
 </tr>
 <tr>
-<td>03.1 Validación Cliente</td>
-<td>281</td>
-<td>3.43%</td>
+<td>Validación Cliente</td>
+<td>265</td>
+<td>3.37%</td>
 </tr>
 <tr>
-<td>04. Pre Evaluación (E1)</td>
-<td>301</td>
-<td>3.68%</td>
+<td>Pre Evaluación</td>
+<td>310</td>
+<td>3.95%</td>
 </tr>
 <tr>
-<td>05. Evaluación (E2)</td>
-<td>3,914</td>
-<td>47.82%</td>
-</tr>
-<tr>
-<td>06. Full Fraudes</td>
-<td>17</td>
-<td>0.21%</td>
-</tr>
-<tr>
-<td>07. Backoffice</td>
-<td>69</td>
-<td>0.84%</td>
-</tr>
-<tr>
-<td>09. Flujo Completo</td>
-<td>515</td>
-<td>6.29%</td>
+<td>Evaluación</td>
+<td>3744</td>
+<td>47.65%</td>
 </tr>
 </tbody>
 </table>
 </div>
-
 <!-- PRESENCIAL -->
 <div id="presencial" class="tab-content hidden">
 <div class="grid">
@@ -464,27 +439,27 @@ Presencial
 <h3>Principales Fugas</h3>
 <div class="loss">
 <div class="loss-top">
-<span>Evaluación (E2)</span>
-<span>59.52%</span>
+<span>Evaluación</span>
+<span>60.52%</span>
 </div>
 <div class="loss-bar">
-<div class="loss-fill" style="width:59.52%"></div>
+<div class="loss-fill" style="width:60.52%"></div>
 </div>
 </div>
 <div class="loss">
 <div class="loss-top">
 <span>Validación INE</span>
-<span>8.81%</span>
+<span>9.02%</span>
 </div>
 <div class="loss-bar">
-<div class="loss-fill" style="width:8.81%"></div>
+<div class="loss-fill" style="width:9.02%"></div>
 </div>
 </div>
 </div>
 <div class="panel">
 <h3>Resultado General</h3>
 <div style="font-size:60px;color:var(--presencial);font-weight:bold;">
-16.44%
+15.65%
 </div>
 <p>Tasa de aprobación de solicitudes presenciales</p>
 </div>
@@ -499,54 +474,38 @@ Presencial
 </thead>
 <tbody>
 <tr>
-<td>01. Creación Solicitud</td>
-<td>782</td>
-<td>2.26%</td>
+<td>Creación Solicitud</td>
+<td>768</td>
+<td>2.03%</td>
 </tr>
 <tr>
-<td>02. Validación INE</td>
-<td>3,054</td>
-<td>8.81%</td>
+<td>Validación INE</td>
+<td>3407</td>
+<td>9.02%</td>
 </tr>
 <tr>
-<td>03. F1</td>
-<td>16</td>
+<td>F1</td>
+<td>17</td>
 <td>0.05%</td>
 </tr>
 <tr>
-<td>03.1 Validación Cliente</td>
-<td>2,110</td>
-<td>6.09%</td>
+<td>Validación Cliente</td>
+<td>2075</td>
+<td>5.49%</td>
 </tr>
 <tr>
-<td>04. Pre Evaluación (E1)</td>
-<td>312</td>
-<td>0.90%</td>
+<td>Pre Evaluación</td>
+<td>423</td>
+<td>1.12%</td>
 </tr>
 <tr>
-<td>05. Evaluación (E2)</td>
-<td>20,626</td>
-<td>59.52%</td>
-</tr>
-<tr>
-<td>07. Backoffice</td>
-<td>225</td>
-<td>0.65%</td>
-</tr>
-<tr>
-<td>08. Pendiente de Retome</td>
-<td>1,832</td>
-<td>5.29%</td>
-</tr>
-<tr>
-<td>09. Flujo Completo</td>
-<td>5,696</td>
-<td>16.44%</td>
+<td>Evaluación</td>
+<td>22861</td>
+<td>60.52%</td>
 </tr>
 </tbody>
 </table>
 </div>
-
 </div>
 <script>
 function showTab(tabId){
@@ -560,13 +519,14 @@ btn.classList.remove('active');
 document.querySelector(`[data-tab="${tabId}"]`).classList.add('active');
 }
 document.addEventListener('DOMContentLoaded', () => {
+// Tabs
 showTab('digital');
 document.querySelectorAll('.tab').forEach(tab => {
 tab.addEventListener('click', () => {
 showTab(tab.dataset.tab);
 });
 });
-
+// Tema Oscuro / Claro
 const themeBtn = document.getElementById("themeToggle");
 const savedTheme = localStorage.getItem("theme");
 const updateButtonText = (isDark) => {
