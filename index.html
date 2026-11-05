@@ -223,35 +223,31 @@ background: var(--secondary);
 border: 3px solid var(--card);
 box-shadow: 0 0 0 2px var(--secondary);
 }
-.timeline-item.danger .timeline-dot {
-background: var(--danger);
-box-shadow: 0 0 0 2px var(--danger);
-}
-.timeline-item.warning .timeline-dot {
-background: var(--warning);
-box-shadow: 0 0 0 2px var(--warning);
-}
-.timeline-item.success .timeline-dot {
-background: var(--success);
-box-shadow: 0 0 0 2px var(--success);
-}
-/* HIGHLIGHTS OB PARA CANALES */
-#digital .timeline-item.ob .timeline-dot {
-background: var(--digital);
-box-shadow: 0 0 0 2px var(--digital);
-}
+
+/* HIGHLIGHTS OB PARA CANALES (El fondo y borde izquierdo se mantienen, pero el dot respeta estados si los tiene) */
 #digital .timeline-item.ob .timeline-content {
 border-left: 4px solid var(--digital);
 background: rgba(14, 165, 164, 0.05);
-}
-#presencial .timeline-item.ob .timeline-dot {
-background: var(--presencial);
-box-shadow: 0 0 0 2px var(--presencial);
 }
 #presencial .timeline-item.ob .timeline-content {
 border-left: 4px solid var(--presencial);
 background: rgba(37, 99, 235, 0.05);
 }
+
+/* ESTADOS DE LOS PUNTOS (Tienen prioridad sobre OB para que danger/warning/success pinten el dot correctamente) */
+.timeline-item.danger .timeline-dot {
+background: var(--danger) !important;
+box-shadow: 0 0 0 2px var(--danger) !important;
+}
+.timeline-item.warning .timeline-dot {
+background: var(--warning) !important;
+box-shadow: 0 0 0 2px var(--warning) !important;
+}
+.timeline-item.success .timeline-dot {
+background: var(--success) !important;
+box-shadow: 0 0 0 2px var(--success) !important;
+}
+
 .badge-ob {
 display: inline-block;
 padding: 2px 8px;
@@ -338,7 +334,7 @@ opacity:.9;
 </div>
 <div class="week">
 <strong>SEMANA ACTUAL</strong><br>
-28 Oct - 04 Nov 2026
+28 Oct - 04 Nov[span_0](start_span)[span_0](end_span) 2026
 </div>
 </div>
 <div class="kpis">
@@ -550,23 +546,23 @@ opacity:.9;
 <div class="timeline-container">
 <h3>Línea de Tiempo del Proceso - Presencial</h3>
 <div class="timeline">
-<div class="timeline-item ob">
+<div class="timeline-item">
 <div class="timeline-dot"></div>
 <div class="timeline-content">
 <span class="timeline-title">01. Creación Solicitud <span class="badge-ob">OB</span> </span>
 <div class="timeline-stats">
-<span class="timeline-volume">Volumen: 782</span>
-<span class="timeline-porc">2.26%</span>
+<span class="timeline-volume">Volumen: 782[span_1](start_span)[span_1](end_span)</span>
+<span class="timeline-porc">2.26%[span_2](start_span)[span_2](end_span)</span>
 </div>
 </div>
 </div>
-<div class="timeline-item ob ">
-<div class="timeline-dot warning"></div>
+<div class="timeline-item ob warning">
+<div class="timeline-dot"></div>
 <div class="timeline-content">
 <span class="timeline-title">02. Validación INE <span class="badge-ob">OB</span> </span>
 <div class="timeline-stats">
-<span class="timeline-volume">Volumen: 3,054</span>
-<span class="timeline-porc">8.81%</span>
+<span class="timeline-volume">Volumen: 3,054[span_3](start_span)[span_3](end_span)</span>
+<span class="timeline-porc">8.81%[span_4](start_span)[span_4](end_span)</span>
 </div>
 </div>
 </div>
@@ -575,8 +571,8 @@ opacity:.9;
 <div class="timeline-content">
 <span class="timeline-title">03. F1</span>
 <div class="timeline-stats">
-<span class="timeline-volume">Volumen: 16</span>
-<span class="timeline-porc">0.05%</span>
+<span class="timeline-volume">Volumen: 16[span_5](start_span)[span_5](end_span)</span>
+<span class="timeline-porc">0.05%[span_6](start_span)[span_6](end_span)</span>
 </div>
 </div>
 </div>
@@ -585,8 +581,8 @@ opacity:.9;
 <div class="timeline-content">
 <span class="timeline-title">04. 1er Validación Cliente <span class="badge-ob">OB</span> </span>
 <div class="timeline-stats">
-<span class="timeline-volume">Volumen: 2,110</span>
-<span class="timeline-porc">6.09%</span>
+<span class="timeline-volume">Volumen: 2,110[span_7](start_span)[span_7](end_span)</span>
+<span class="timeline-porc">6.09%[span_8](start_span)[span_8](end_span)</span>
 </div>
 </div>
 </div>
@@ -595,8 +591,8 @@ opacity:.9;
 <div class="timeline-content">
 <span class="timeline-title">05. Pre Evaluación (E1)</span>
 <div class="timeline-stats">
-<span class="timeline-volume">Volumen: 312</span>
-<span class="timeline-porc">0.90%</span>
+<span class="timeline-volume">Volumen: 312[span_9](start_span)[span_9](end_span)</span>
+<span class="timeline-porc">0.90%[span_10](start_span)[span_10](end_span)</span>
 </div>
 </div>
 </div>
@@ -605,8 +601,8 @@ opacity:.9;
 <div class="timeline-content">
 <span class="timeline-title">06. Evaluación (E2)</span>
 <div class="timeline-stats">
-<span class="timeline-volume">Volumen: 20,626</span>
-<span class="timeline-porc">59.52%</span>
+<span class="timeline-volume">Volumen: 20,626[span_11](start_span)[span_11](end_span)</span>
+<span class="timeline-porc">59.52%[span_12](start_span)[span_12](end_span)</span>
 </div>
 </div>
 </div>
@@ -616,8 +612,8 @@ opacity:.9;
 <div class="timeline-content">
 <span class="timeline-title">07. Backoffice </span>
 <div class="timeline-stats">
-<span class="timeline-volume">Volumen: 225</span>
-<span class="timeline-porc">0.65%</span>
+<span class="timeline-volume">Volumen: 225[span_13](start_span)[span_13](end_span)</span>
+<span class="timeline-porc">0.65%[span_14](start_span)[span_14](end_span)</span>
 </div>
 </div>
 </div>
@@ -626,8 +622,8 @@ opacity:.9;
 <div class="timeline-content">
 <span class="timeline-title">08. Pendiente de Retome</span>
 <div class="timeline-stats">
-<span class="timeline-volume">Volumen: 1,832</span>
-<span class="timeline-porc">5.29%</span>
+<span class="timeline-volume">Volumen: 1,832[span_15](start_span)[span_15](end_span)</span>
+<span class="timeline-porc">5.29%[span_16](start_span)[span_16](end_span)</span>
 </div>
 </div>
 </div>
@@ -636,8 +632,8 @@ opacity:.9;
 <div class="timeline-content">
 <span class="timeline-title">09. Flujo Completo (Aprobados) <span class="badge-ob">OB</span> </span>
 <div class="timeline-stats">
-<span class="timeline-volume">Volumen: 5,696</span>
-<span class="timeline-porc">16.44%</span>
+<span class="timeline-volume">Volumen: 5,696[span_17](start_span)[span_17](end_span)</span>
+<span class="timeline-porc">16.44%[span_18](start_span)[span_18](end_span)</span>
 </div>
 </div>
 </div>
